@@ -8,6 +8,8 @@ const CLIENT_ID = "a749ae54533d4373a5cd180d822cf1e6";
 const CLIENT_SECRET ="22346e79e4514180b51fcc6abb6adcce";
 
 function App() { 
+  const [ searchInput, setSearchInput] = useState("");
+  const [accessToken, setAccsessToken] = useState("");
 
 useEffect(() => {
   var authParameters = {
@@ -20,11 +22,34 @@ useEffect(() => {
 
 fetch('https://accounts.spotify.com/api/token', authParameters)
 .then(result => result.json())
-.then(data => console.log(data))
+.then(data => setAccsessToken(data.access_token))
 }, [])
 
+async function search(){
 
-  const [ searchInput, setSearchInput] = useState("")
+console.log('search for ' + searchInput)
+
+var searchParameters = {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer ' + accessToken
+  }
+}
+
+var artistID = await fetch('https://api.spotify.com/v1/search?q=' + searchInput + '&type=artist', searchParameters)
+.then(response => response.json())
+.then(data => { return data.artists.items[0].id})
+
+console.log('artist id is '+ artistID)
+
+var albums = await fetch('https://api.spotify.com/v1/artists/' + artistID + '/albums' + '?include_groups=album&market=US&limit=50', searchParameters)
+.then(response => response.json())
+.then(data => {
+  console.log(data);
+})
+}
+
   return (
     <div className="App">
       <Container>
@@ -34,12 +59,12 @@ fetch('https://accounts.spotify.com/api/token', authParameters)
           type='input'
           onKeyDown={event => {
             if (event.key == "Enter") {
-              console.log("pressed enter")
+              search();
             }
           }}
           onChange={event => setSearchInput(event.target.value)}
           />
-          <Button onClick={event => {console.log("clicked button")}}>
+          <Button onClick={search}>
             Search
           </Button>
         </InputGroup>
