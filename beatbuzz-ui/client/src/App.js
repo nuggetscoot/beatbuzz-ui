@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container, InputGroup, FormControl, Button, Row, Card, CardBody } from 'react-bootstrap';
+import { useState, useEffect } from 'react';
+import Dashboard from './Dashbord';
+import Login from './Login';
 
-export default App;
+const CLIENT_ID = "a749ae54533d4373a5cd180d822cf1e6";
+const CLIENT_SECRET ="22346e79e4514180b51fcc6abb6adcce";
+
+const code = new URLSearchParams(window.location.search).get("code")
+
+function App() { 
+  
+  return code ? <Dashboard code={code} /> : <Login />
+  
+  
+          }
+          export default App;
