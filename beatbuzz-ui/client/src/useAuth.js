@@ -8,38 +8,38 @@ export default function useAuth(code) {
 
   useEffect(() => {
     axios
-      .post("https://localhost:3001/login", {
+      .post("https://localhost:3002/login", {
         code,
       })
       .then((res) => {
         setAccsessToken(res.data.accsessToken);
-        setRefreshToken(res.data.refreshToken);
-        setExpiresIn(res.data.expiresIn);
-        window.history.pushState({}, null, "/");
+        // setRefreshToken(res.data.refreshToken);
+        // setExpiresIn(res.data.expiresIn);
+        // window.history.pushState({}, null, "/");
       })
       .catch(() => {
-        window.location = "/";
+        // window.location = "/";
       });
   }, [code]);
 
-  useEffect(() => {
-    if (!accsessToken || !expiresIn) return;
-    const interval = setInterval(() => {
-      axios
-        .post("https://localhost:3001/refresh", {
-          refreshToken,
-        })
-        .then((res) => {
-          setAccsessToken(res.data.accsessToken);
-          setExpiresIn(res.data.expiresIn);
-        })
-        .catch(() => {
-          window.location = "/";
-        });
-    }, (expiresIn - 60) * 1000);
+  // useEffect(() => {
+  //   if (!accsessToken || !expiresIn) return;
+  //   const interval = setInterval(() => {
+  //     axios
+  //       .post("https://localhost:3001/refresh", {
+  //         refreshToken,
+  //       })
+  //       .then((res) => {
+  //         setAccsessToken(res.data.accsessToken);
+  //         setExpiresIn(res.data.expiresIn);
+  //       })
+  //       .catch(() => {
+  //         window.location = "/";
+  //       });
+  //   }, (expiresIn - 60) * 1000);
 
-    return () => clearInterval(interval);
-  }, [refreshToken, expiresIn]);
+  //   return () => clearInterval(interval);
+  // }, [refreshToken, expiresIn]);
 
   return accsessToken;
 }
