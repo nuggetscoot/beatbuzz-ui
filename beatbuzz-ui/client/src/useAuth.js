@@ -2,44 +2,44 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function useAuth(code) {
-  const [accsessToken, setAccsessToken] = useState();
+  const [accessToken, setAccessToken] = useState();
   const [refreshToken, setRefreshToken] = useState();
   const [expiresIn, setExpiresIn] = useState();
 
   useEffect(() => {
     axios
-      .post("https://localhost:3002/login", {
+      .post("http://localhost:3001/login", {
         code,
       })
       .then((res) => {
-        setAccsessToken(res.data.accsessToken);
-        // setRefreshToken(res.data.refreshToken);
-        // setExpiresIn(res.data.expiresIn);
-        // window.history.pushState({}, null, "/");
+        setAccessToken(res.data.accessToken);
+        setRefreshToken(res.data.refreshToken);
+        setExpiresIn(res.data.expiresIn);
+        window.history.pushState({}, null, "/");
       })
-      .catch(() => {
-        // window.location = "/";
+      .catch((e) => {
+        //window.location = "/";
       });
   }, [code]);
 
-  // useEffect(() => {
-  //   if (!accsessToken || !expiresIn) return;
-  //   const interval = setInterval(() => {
-  //     axios
-  //       .post("https://localhost:3001/refresh", {
-  //         refreshToken,
-  //       })
-  //       .then((res) => {
-  //         setAccsessToken(res.data.accsessToken);
-  //         setExpiresIn(res.data.expiresIn);
-  //       })
-  //       .catch(() => {
-  //         window.location = "/";
-  //       });
-  //   }, (expiresIn - 60) * 1000);
+  useEffect(() => {
+    if (!accessToken || !expiresIn) return;
+    const interval = setInterval(() => {
+      axios
+        .post("https://localhost:3001/refresh", {
+          refreshToken,
+        })
+        .then((res) => {
+          setAccessToken(res.data.accessToken);
+          setExpiresIn(res.data.expiresIn);
+        })
+        .catch(() => {
+          window.location = "/";
+        });
+    }, (expiresIn - 60) * 1000);
 
-  //   return () => clearInterval(interval);
-  // }, [refreshToken, expiresIn]);
+    return () => clearInterval(interval);
+  }, [refreshToken, expiresIn]);
 
-  return accsessToken;
+  return accessToken;
 }
