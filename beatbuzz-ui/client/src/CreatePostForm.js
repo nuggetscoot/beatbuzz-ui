@@ -1,7 +1,7 @@
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import StarRating from './StarRating'; // Import the StarRating component
+import './CreatePostForm.css'; // Import CSS file for styling
 
 const CreatePostForm = () => {
   const [formData, setFormData] = useState({
@@ -35,11 +35,11 @@ const CreatePostForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" name="content" placeholder="Review" value={formData.content} onChange={handleChange} />
+    <form className="create-post-form" onSubmit={handleSubmit}>
+      <input className="input-field" type="text" name="albumName" placeholder="Album Name" value={formData.albumName} onChange={handleChange} />
       <StarRating onChange={handleRatingChange} />
-      <input type="text" name="albumName" placeholder="Album Name" value={formData.albumName} onChange={handleChange} />
-      <button type="submit">Submit</button>
+      <input className="input-field" type="text" name="content" placeholder="Review" value={formData.content} onChange={handleChange} />
+      <button className="submit-button" type="submit">Submit</button>
     </form>
   );
 };
