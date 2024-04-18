@@ -17,6 +17,8 @@ export default function Dashboard({ code }) {
   useEffect(() => {
     if (!accessToken) return;
     spotifyApi.setAccessToken(accessToken);
+    console.log("Access Token:", accessToken); // Add this line to check the access token
+
   }, [accessToken]);
 
   useEffect(() => {
