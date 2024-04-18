@@ -13,6 +13,12 @@ export default function Dashboard({ code }) {
   const accessToken = useAuth(code);
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [playingTrack, setPlayingTrack] = useState()
+
+  function chooseTrack(track) {
+    setPlayingTrack(track)
+    setSearch('')
+  }
 
   useEffect(() => {
     if (!accessToken) return;
@@ -67,7 +73,9 @@ export default function Dashboard({ code }) {
   }, [accessToken, search]);
 
   return (
-    <Container className="d-flex flex-column py-2" style={{ height: "100vh" }}>
+
+    //this container is the search bar
+    <Container className="d-flex flex-column py-2" style={{ height: "100vh" }}> 
       <Form.Control
         type="search"
         placeholder="Search Songs/Artists"
@@ -75,10 +83,10 @@ export default function Dashboard({ code }) {
       />
       <div className="flex-grow-1 my-2" style={{ overflowY: "auto" }}>
         {searchResults.map((track) => (
-          <TrackSearchResult track={track} key={track.uri} />
+          <TrackSearchResult track={track} key={track.uri} chooseTrack={chooseTrack} />
         ))}
       </div>
-      <div>bottom</div>
+      <div> <Player accessToken={accessToken} trackUri={playingTrack?.uri}/></div>
     </Container>
   );
 }
