@@ -72,34 +72,35 @@
 // }
 // export default App
 
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import React from "react";
+// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// import "bootstrap/dist/css/bootstrap.min.css";
 
-
-import Login from "./Login";
-import CreatePostForm from "./CreatePostForm";
-
-const code = new URLSearchParams(window.location.search).get("code");
 
 // import Login from "./Login";
-import Register from "./Register";
 // import CreatePostForm from "./CreatePostForm";
-function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/post/create" element={<CreatePostForm />} />
-        
-        <Route path="/" element={<Register />} />
-      </Routes>
-    </Router>
-  );
-}
 
+// const code = new URLSearchParams(window.location.search).get("code");
+
+// // import Login from "./Login";
+// import Register from "./Register";
+// // import CreatePostForm from "./CreatePostForm";
+// function App() {
+//   return (
+//     <Router>
+//       <Routes>
+//         <Route path="/" element={<Login />} />
+//         <Route path="/post/create" element={<CreatePostForm />} />
+        
+//         <Route path="/" element={<Register />} />
+//       </Routes>
+//     </Router>
+//   );
+// }
+
+
+// // export default App;
 
 // export default App;
 
-export default App;
 
