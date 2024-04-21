@@ -184,25 +184,94 @@
 // };
 
 // export default CreatePostForm;
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import CreatePostForm from "./CreatePostForm";
-import DeletePostForm from "./DeletePostForm";
-import AllPostsPage from "./AllPosts";
-import Login from "./Login";
-import Register from "./Register";
 
-function App() {
+
+// import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import CreatePostForm from "./CreatePostForm";
+// import AllPostsPage from "./AllPosts";
+// import Login from "./Login";
+// import Register from "./Register";
+// import DeleteAndEditForm from "./DeleteAndEditForm";
+
+// function App() {
+//   return (
+//     <BrowserRouter>
+//       <Routes>
+//         <Route path="/" element={<Register />} />
+//         <Route path="post/create" element={<CreatePostForm />} />
+//         <Route path="post/delete-edit" element={<DeleteAndEditForm/>} />
+//         <Route path="all" element={<AllPostsPage />} />
+//       </Routes>
+//     </BrowserRouter>
+//   );
+// }
+
+// export default App;
+
+// import React from 'react';
+// import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+// import CreatePostForm from './CreatePostForm';
+// import Dashboard from './Dashbord';
+
+// const App = () => {
+//   return (
+//     <Router>
+//       <Switch>
+//         <Route exact path="/" component={Home} />
+//         <Route path="/create-review" component={CreatePostForm} />
+//         <Route path="/search" component={Dashboard} />
+//       </Switch>
+//     </Router>
+//   );
+// };
+
+// const Home = () => {
+//   return (
+//     <div>
+//       <h1>Welcome to Your App</h1>
+//       <div>
+//         <a href="/create-review">
+//           <button>Create Review</button>
+//         </a>
+//         <a href="/search">
+//           <button>Search</button>
+//         </a>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default App;
+import React, { useState } from 'react';
+import CreatePostForm from './CreatePostForm';
+import Dashboard from './Dashbord';
+const App = () => {
+  const [currentPage, setCurrentPage] = useState('home');
+
+  const renderPage = () => {
+    switch (currentPage) {
+      case 'create-review':
+        return <CreatePostForm />;
+      case 'search':
+        return <Dashboard />;
+      default:
+        return (
+          <div>
+            <h1>Welcome to Your App</h1>
+            <div>
+              <button onClick={() => setCurrentPage('create-review')}>Create Review</button>
+              <button onClick={() => setCurrentPage('search')}>Search</button>
+            </div>
+          </div>
+        );
+    }
+  };
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Register />} />
-        <Route path="post/create" element={<CreatePostForm />} />
-        <Route path="post/delete" element={<DeletePostForm />} />
-        <Route path="all" element={<AllPostsPage />} />
-      </Routes>
-    </BrowserRouter>
+    <div>
+      {renderPage()}
+    </div>
   );
-}
+};
 
 export default App;
-
