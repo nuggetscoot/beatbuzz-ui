@@ -4,7 +4,7 @@ import TrackSearchResult from "./TrackSearchResult";
 import Player from "./Player";
 import { Container, Form } from "react-bootstrap";
 import SpotifyWebApi from "spotify-web-api-node";
-
+import "./Sort.css"
 const spotifyApi = new SpotifyWebApi({
   clientId: "a749ae54533d4373a5cd180d822cf1e6",
 });
@@ -13,6 +13,13 @@ export default function Dashboard({ code }) {
   const accessToken = useAuth(code);
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [playingTrack, setPlayingTrack] = useState()
+  const [sortingPreference, setSortingPreference] = useState('popularity'); // Default sorting 
+
+  function chooseTrack(track) {
+    setPlayingTrack(track)
+    setSearch('')
+  }
 
   useEffect(() => {
     if (!accessToken) return;
@@ -24,11 +31,21 @@ export default function Dashboard({ code }) {
     if (!accessToken) return;
 
     let cancel = false;
+
     spotifyApi
       .searchTracks(search)
       .then((res) => {
         if (cancel) return;
         console.log("Search results:", res.body.tracks.items);
+
+                // Sorting the tracks based on the preference
+                let sortedTracks = res.body.tracks.items;
+                if (sortingPreference === "popularity") {
+                  sortedTracks.sort((a, b) => b.popularity - a.popularity);
+                } else if (sortingPreference === "release_date") {
+                  sortedTracks.sort((a, b) => new Date(b.album.release_date) - new Date(a.album.release_date));
+                }
+        
         setSearchResults(
           res.body.tracks.items
             .map((track) => {
@@ -62,21 +79,37 @@ export default function Dashboard({ code }) {
     return () => {
       cancel = true;
     };
-  }, [accessToken, search]);
+  }, [accessToken, search, sortingPreference]);
+
 
   return (
-    <Container className="d-flex flex-column py-2" style={{ height: "100vh" }}>
+
+    //this container is the search bar
+    <Container className="d-flex flex-column py-2" style={{ height: "100vh" }}> 
+          <div className="search-bar">
       <Form.Control
         type="search"
         placeholder="Search Songs/Artists"
         onChange={(e) => setSearch(e.target.value)}
       />
+            <div className="dropdown">
+        <label>
+          Sort by:
+          <select value={sortingPreference} onChange={(e) => setSortingPreference(e.target.value)}>
+            <option value="popularity">Popularity</option>
+            <option value="release_date">Recent</option>
+          </select>
+        </label>
+        </div>
+      </div>
       <div className="flex-grow-1 my-2" style={{ overflowY: "auto" }}>
         {searchResults.map((track) => (
-          <TrackSearchResult track={track} key={track.uri} />
+          <TrackSearchResult track={track} key={track.uri} chooseTrack={chooseTrack} />
         ))}
       </div>
-      <div>bottom</div>
+      <div> <Player accessToken={accessToken} trackUri={playingTrack?.uri}/></div>
     </Container>
   );
 }
+
+

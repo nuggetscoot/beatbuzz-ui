@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import StarRating from './StarRating';
 import './CreatePostForm.css';
+import SpotifyWebApi from "spotify-web-api-node";
+import "./Sort.css"
+const spotifyApi = new SpotifyWebApi({
+  clientId: "a749ae54533d4373a5cd180d822cf1e6",
+});
 
 const CreatePostForm = () => {
   const [formData, setFormData] = useState({
