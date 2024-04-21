@@ -68,11 +68,10 @@ const CreatePostForm = () => {
     }
   };
   
-
   return (
     <form className="create-post-form" onSubmit={handleSubmit}>
-      <input className="input-field" type="text" name="albumName" placeholder="Album Name" value={formData.albumName} onChange={handleChange} />
       {errors.albumName && <span className="error-message">{errors.albumName}</span>}
+      <input className="input-field" type="text" name="albumName" placeholder="Album Name" value={formData.albumName} onChange={handleChange} />
       <StarRating rating={formData.starRating} onChange={handleRatingChange} />
       {errors.starRating && <span className="error-message">{errors.starRating}</span>}
       <input className="input-field" type="text" name="content" placeholder="Review" value={formData.content} onChange={handleChange} />
