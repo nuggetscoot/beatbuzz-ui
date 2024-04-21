@@ -242,12 +242,24 @@
 // };
 
 // export default App;
+
+
+
+
 import React, { useState } from 'react';
 import CreatePostForm from './CreatePostForm';
 import Dashboard from './Dashbord';
+import './App.css'; 
+import logo from './logo.jpeg'; 
+
 const App = () => {
   const [currentPage, setCurrentPage] = useState('home');
 
+  const [redirectToHome, setRedirectToHome] = useState(false); // State to control redirection
+
+  const handleCreatePost = () => {
+    setRedirectToHome(true); // Set redirectToHome to true to trigger redirection
+  };
   const renderPage = () => {
     switch (currentPage) {
       case 'create-review':
@@ -256,9 +268,10 @@ const App = () => {
         return <Dashboard />;
       default:
         return (
-          <div>
-            <h1>Welcome to Your App</h1>
-            <div>
+          <div className="container">
+            <img src={logo} alt="Logo" className="logo" />
+            <h1 className="title">Beat Buzz</h1>
+            <div className="button-container">
               <button onClick={() => setCurrentPage('create-review')}>Create Review</button>
               <button onClick={() => setCurrentPage('search')}>Search</button>
             </div>
@@ -275,3 +288,4 @@ const App = () => {
 };
 
 export default App;
+
