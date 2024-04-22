@@ -1,0 +1,40 @@
+.search-bar {
+    display: flex;
+    align-items: center;
+  }
+  
+  .dropdown {
+    position: relative;
+    margin-left: 10px; /* Adjust as needed */
+  }
+  
+  .dropdown select {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+  .dropdown:after {
+    content: "\25BC";
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  
+  .dropdown label {
+    position: relative;
+  }
+  
+  .dropdown label span {
+    color: #333;
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  
