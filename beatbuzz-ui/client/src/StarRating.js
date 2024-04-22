@@ -32,3 +32,4 @@ const StarRating = ({ onChange }) => {
 };
 
 export default StarRating;
+
