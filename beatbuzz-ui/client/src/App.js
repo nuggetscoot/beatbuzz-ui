@@ -14,10 +14,15 @@
 import React, { useState } from 'react';
 import CreatePostForm from './CreatePostForm';
 import Dashboard from './Dashbord';
+import Login from './Login';
 import './App.css'; 
 import logo from './logo.jpeg'; 
 
 const App = () => {
+
+  const code = new URLSearchParams(window.location.search).get("code");
+  const userId = 1;
+
   const [currentPage, setCurrentPage] = useState('home');
 
   const [redirectToHome, setRedirectToHome] = useState(false); // State to control redirection
@@ -28,9 +33,13 @@ const App = () => {
   const renderPage = () => {
     switch (currentPage) {
       case 'create-review':
-        return <CreatePostForm />;
+        return (
+          <div className="App">
+            <CreatePostForm userId={userId} /> {/* Pass userId as a prop */}
+          </div>
+        );
       case 'search':
-        return <Dashboard />;
+        return code ? <Dashboard code={code} /> : <Login />;
       default:
         return (
           <div className="container">
@@ -44,6 +53,7 @@ const App = () => {
         );
     }
   };
+  
 
   return (
     <div>
@@ -51,10 +61,7 @@ const App = () => {
     </div>
   );
 };
-// >>>>>>> ffceea697825fd60583fc878e6c48c6ad1012130
 
-//   return code ? <Dashboard code={code} /> : <Login />;
-// };
 
 
 export default App;
