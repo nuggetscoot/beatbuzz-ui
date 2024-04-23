@@ -1,8 +1,7 @@
 // StarRating.js
 
 import React, { useState } from 'react';
-import './StarRating.css'; // Import CSS file for styling stars
-
+import './StarRatingDisplay.css'; 
 const StarRating = ({ onChange }) => {
   const [rating, setRating] = useState(0);
 
