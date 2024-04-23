@@ -24,7 +24,6 @@ const CreatePostForm = () => {
 
   const handleRatingChange = (rating) => {
     setFormData({ ...formData, starRating: rating });
-    // Clear star rating error when a rating is selected
     setErrors({ ...errors, starRating: '' });
   };
 
@@ -55,7 +54,7 @@ const CreatePostForm = () => {
       return;
     }
     try {
-      await axios.post('http://localhost:8080/post/create', formData);
+      await axios.post('http://localhost:8080/api/posts', formData);
       alert('Post created successfully');
       setFormData({
         content: '',

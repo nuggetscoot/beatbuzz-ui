@@ -27,7 +27,7 @@
   }
   
   .album-name {
-    font-size: 50px; /* Increased font size for the album name */
+    font-size: 50px; 
   }
   
   .star-rating {
@@ -35,14 +35,14 @@
   }
   
   .star-rating span {
-    font-size: 20px; /* Decreased font size for the stars */
+    font-size: 20px; 
     color: #ccc;
   }
   
   .star,
   .star-filled {
-    width: 50px; /* Decreased star size */
-    height: 50px; /* Decreased star size */
+    width: 50px; 
+    height: 50px; 
     fill: none;
     stroke: #ccc;
     stroke-width: 2;

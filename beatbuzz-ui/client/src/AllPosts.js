@@ -17,11 +17,7 @@ const AllPostsPage = () => {
       });
   }, []); // Empty dependency array to run the effect only once when the component mounts
 
-  const handleButtonClick = () => {
-    // Handle button click logic here
-    // For example, you can perform any action you want
-    console.log('Button clicked');
-  };
+
 
   return (
     <div className="all-posts-container">
@@ -31,7 +27,6 @@ const AllPostsPage = () => {
           <p className="title">{post.albumName}</p>
           <p className="post-details"><StarRating rating={post.starRating} /></p>
           <p className="post-content">{post.content}</p>
-          {/* You can display other post details as needed */}
         </div>
       ))}
     </div>
