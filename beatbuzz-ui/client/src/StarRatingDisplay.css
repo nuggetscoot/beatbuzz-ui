@@ -1,0 +1,22 @@
+/* StarRating.css */
+
+.star-rating {
+    display: inline-block;
+  }
+  
+  .star-rating input[type="radio"] {
+    display: none;
+  }
+  
+  .star-rating label {
+    cursor: pointer;
+  }
+  
+  .star-rating span {
+    font-size: 35px;
+    color: #ccc;
+  }
+  
+  .star-rating .filled {
+    color: #f39c12;
+  }

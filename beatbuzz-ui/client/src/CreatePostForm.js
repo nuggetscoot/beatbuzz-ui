@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import StarRating from './StarRating';
+import StarRating from './StarRatingCreate';
 import './CreatePostForm.css';
 import SpotifyWebApi from "spotify-web-api-node";
 import "./Sort.css"
@@ -12,7 +12,8 @@ const CreatePostForm = () => {
   const [formData, setFormData] = useState({
     content: '',
     starRating: 1,
-    albumName: ''
+    albumName: '',
+    userId: 1
   });
 
   const [errors, setErrors] = useState({});
@@ -23,7 +24,6 @@ const CreatePostForm = () => {
 
   const handleRatingChange = (rating) => {
     setFormData({ ...formData, starRating: rating });
-    // Clear star rating error when a rating is selected
     setErrors({ ...errors, starRating: '' });
   };
 
@@ -48,13 +48,13 @@ const CreatePostForm = () => {
       setErrors(formErrors);
       return;
     }
-    // Check if star rating is selected
     if (!formData.starRating || formData.starRating < 1 || formData.starRating > 5) {
       setErrors({ ...errors, starRating: 'Please select a star rating' });
       return;
     }
     try {
-      await axios.post('http://localhost:8080/post/create', formData);
+      await axios.post('http://localhost:8080/api/posts', formData);
+      //sends data to backend
       alert('Post created successfully');
       setFormData({
         content: '',
@@ -71,7 +71,7 @@ const CreatePostForm = () => {
   return (
     <form className="create-post-form" onSubmit={handleSubmit}>
       {errors.albumName && <span className="error-message">{errors.albumName}</span>}
-      <input className="input-field" type="text" name="albumName" placeholder="Album Name" value={formData.albumName} onChange={handleChange} />
+      <input className="input-field" type="text" name="albumName" placeholder="Song Name" value={formData.albumName} onChange={handleChange} />
       <StarRating rating={formData.starRating} onChange={handleRatingChange} />
       {errors.starRating && <span className="error-message">{errors.starRating}</span>}
       <input className="input-field" type="text" name="content" placeholder="Review" value={formData.content} onChange={handleChange} />

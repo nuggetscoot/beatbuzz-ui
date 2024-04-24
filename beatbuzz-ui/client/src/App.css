@@ -31,13 +31,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start; /* Align content to the top */
-  height: 100vh;
 }
 
 .title {
   font-size: 48px; /* Increase font size */
   margin-bottom: 10px; /* Adjust margin as needed */
-  color: #333;
+ color: #333;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
@@ -48,13 +47,13 @@
   color: #333;
 }
 
-.button-container {
+.home .button-container {
   display: flex;
   justify-content: center;
   margin-top: 30px;
 }
 
-.button-container button {
+.home .button-container button {
   font-size: 24px;
   padding: 15px 30px;
   margin: 0 10px;
@@ -68,7 +67,7 @@
   transition: background-color 0.3s ease;
 }
 
-.button-container button:hover {
+.home .button-container button:hover {
   background-color: #0056b3;
 }
 
@@ -77,5 +76,5 @@
   margin-bottom: -20px;
   width: 70px; 
   height: auto; /* Maintain aspect ratio */
-  margin-right: 10px; /* Add margin to separate the image from the text */
-}
+ margin-right: 10px; /* Add margin to separate the image from the text */
+ }   
