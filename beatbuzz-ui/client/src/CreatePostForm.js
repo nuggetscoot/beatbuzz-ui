@@ -48,13 +48,13 @@ const CreatePostForm = () => {
       setErrors(formErrors);
       return;
     }
-    // Check if star rating is selected
     if (!formData.starRating || formData.starRating < 1 || formData.starRating > 5) {
       setErrors({ ...errors, starRating: 'Please select a star rating' });
       return;
     }
     try {
       await axios.post('http://localhost:8080/api/posts', formData);
+      //sends data to backend
       alert('Post created successfully');
       setFormData({
         content: '',
@@ -71,7 +71,7 @@ const CreatePostForm = () => {
   return (
     <form className="create-post-form" onSubmit={handleSubmit}>
       {errors.albumName && <span className="error-message">{errors.albumName}</span>}
-      <input className="input-field" type="text" name="albumName" placeholder="Album Name" value={formData.albumName} onChange={handleChange} />
+      <input className="input-field" type="text" name="albumName" placeholder="Song Name" value={formData.albumName} onChange={handleChange} />
       <StarRating rating={formData.starRating} onChange={handleRatingChange} />
       {errors.starRating && <span className="error-message">{errors.starRating}</span>}
       <input className="input-field" type="text" name="content" placeholder="Review" value={formData.content} onChange={handleChange} />
