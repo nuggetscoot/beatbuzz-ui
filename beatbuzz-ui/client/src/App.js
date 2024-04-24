@@ -91,7 +91,7 @@ const App = () => {
 };
 
 const Home = () => (
-  <div>
+  <div className='home'>
     <button><Link to="/create-review" className="submit-button">Create Review</Link></button>
     <button><Link to="/search" className="submit-button">Search</Link></button>
     <button><Link to="/all-posts" className="submit-button">All Posts</Link></button>
