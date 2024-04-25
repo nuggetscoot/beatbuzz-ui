@@ -13,7 +13,7 @@ const CreatePostForm = () => {
     content: '',
     starRating: 1,
     albumName: '',
-    userId: 52
+    userId: 1
   });
 
   const [errors, setErrors] = useState({});
