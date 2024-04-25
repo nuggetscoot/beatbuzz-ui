@@ -1,12 +1,11 @@
-// AllPostsPage.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './AllPosts.css';
 import StarRating from './StarRatingDisplay';
 import { Link } from 'react-router-dom';
-
 const AllPostsPage = () => {
   const [posts, setPosts] = useState([]);
+  const [darkMode, setDarkMode] = useState(false); // State for dark mode
 
   useEffect(() => {
     // Fetch all posts from the backend when the component mounts
@@ -48,8 +47,13 @@ const AllPostsPage = () => {
     }
   };
 
+  const toggleDarkMode = () => {
+    document.body.classList.toggle('dark-mode');
+  };
+  
+
   return (
-    <div className="all-posts-container">
+    <div className={`all-posts-container ${darkMode ? 'dark-mode' : ''}`}>
       <h2 className="all-posts">All Posts</h2>
       {posts.map(post => (
         <div key={post.id} className="post">
