@@ -19,6 +19,21 @@ const AllPostsPage = () => {
       });
   }, []);
 
+  // Update the like count
+  const handleLike = async (postId) => {
+    try {
+      await axios.post(`http://localhost:8080/api/posts/${postId}/like`);
+      setPosts(posts.map(post => {
+        if (post.id === postId) {
+          return { ...post, likes: post.likes + 1 };
+        }
+        return post;
+      }));
+    } catch (error) {
+      console.error('Error liking post:', error);
+    }
+  };
+
   const handleDelete = (postId) => {
     if (window.confirm('Are you sure you want to delete this post?')) {
       // If user confirms, delete the post
@@ -43,10 +58,13 @@ const AllPostsPage = () => {
             <div className="options">
               <Link to={`/edit-post/${post.id}`} className="edit-button">Edit</Link>
               <button onClick={() => handleDelete(post.id)} className="delete-button">Delete</button>
+              <button onClick={() => handleLike(post.id)} className="like-button">❤️ {post.likes}</button> {/* Add Like button */}
             </div>
           </div>
           <p className="post-details"><StarRating rating={post.starRating} /></p>
           <p className="post-content">{post.content}</p>
+          
+          <p className="post-createdAt">Created on: {new Date(post.createdAt).toLocaleString()}</p> {/* Display creation date */}
         </div>
       ))}
     </div>
