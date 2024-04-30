@@ -1,5 +1,2 @@
 # beatbuzz-ui
-Joshua Buehrer
-Daia A.
-Poppy Berning
-Ezekiel Cazacu
+Beat Buzz is a website where music lovers can post reviews on songs. 
