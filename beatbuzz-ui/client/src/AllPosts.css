@@ -126,13 +126,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: -25%;
+    margin-top: 130%;
     margin-left: -200px;
     padding: 400px;
     width: 70%;
     max-width: 1200px;
     margin: 10 auto;
-  }
+  } 
   
   .post {
     margin: 20px 0;
