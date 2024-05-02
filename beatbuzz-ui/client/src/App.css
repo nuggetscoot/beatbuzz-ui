@@ -8,19 +8,15 @@
 }
 
 .toggle-button {
-  position: fixed; /* Add absolute positioning */
-  top: 20px; /* Adjust top position */
-  left: 20px; /* Adjust left position */
-  z-index: 1; /* Ensure button appears above other content */
+  position: fixed; 
 }
 .all-posts-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 100px; /* Adjust the value as needed */
-  min-height: calc(100vh - 100px); /* Subtract height of the toggle button */
+  padding-top: 100px; 
+  min-height: calc(100vh - 100px); 
 }
-/* Additional CSS styles for dark mode toggle button */
 .toggle-button.dark-mode {
   color: #fff;
   background-color: #333;
@@ -29,7 +25,7 @@
 .toggle-button.light-mode {
   color: #333;
   background-color: #fff;
-
+}
 .input-field {
   margin: 10px 0;
   padding: 8px;
@@ -53,21 +49,19 @@
 
 }
 
-/* Add this class to change text color in dark mode */
 .dark-mode-text {
   color: #fff;
 }
 
-/* Apply dark mode styles to other elements */
 .container.dark-mode {
   background-color: #333;
   color: #fff;
 }
 
 .title {
-  font-size: 48px; /* Increase font size */
+  font-size: 48px; 
 
-  margin-bottom: 30px; /* Adjust margin as needed */
+  margin-bottom: 30px; 
  color: #333;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
@@ -104,8 +98,8 @@
   margin-top: 150px;
   margin-bottom: -20px;
   width: 70px;
-  height: auto; /* Maintain aspect ratio */
- margin-right: 10px; /* Add margin to separate the image from the text */
+  height: auto; 
+ margin-right: 10px; 
  }   
 
 

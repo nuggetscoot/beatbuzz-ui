@@ -3,12 +3,13 @@ import axios from 'axios';
 import './AllPosts.css';
 import StarRating from './StarRatingDisplay';
 import { Link } from 'react-router-dom';
+
 const AllPostsPage = () => {
   const [posts, setPosts] = useState([]);
   const [darkMode, setDarkMode] = useState(false); // State for dark mode
 
   useEffect(() => {
-    // Fetch all posts from the backend when the component mounts
+    // Fetch all posts from the backend 
     axios.get('http://localhost:8080/api/posts')
       .then(response => {
         setPosts(response.data);
@@ -38,7 +39,7 @@ const AllPostsPage = () => {
       // If user confirms, delete the post
       axios.delete(`http://localhost:8080/api/posts/${postId}`)
         .then(() => {
-          // Remove the deleted post from the state
+          // Remove the deleted 
           setPosts(posts.filter(post => post.id !== postId));
         })
         .catch(error => {
@@ -47,10 +48,6 @@ const AllPostsPage = () => {
     }
   };
 
-  const toggleDarkMode = () => {
-    document.body.classList.toggle('dark-mode');
-  };
-  
 
   return (
     <div className={`all-posts-container ${darkMode ? 'dark-mode' : ''}`}>

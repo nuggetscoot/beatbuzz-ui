@@ -24,12 +24,13 @@ const App = () => {
   return (
     <Router>
       <div className={`container ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
-        {/* Dark mode toggle button */}
+      {/* ternary operator checks for when toggle is clicked */}
         <button onClick={toggleDarkMode} className={`toggle-button ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
           {isDarkMode ? 'Light Mode' : 'Dark Mode'}
         </button>
         <img src={logo} alt="Logo" className="logo" />
         <h1 className={`title ${isDarkMode ? 'dark-mode-text' : ''}`}>Beat Buzz</h1>
+        {/* changes text to white when dark mode is toggled */}
         <div className="button-container">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -45,6 +46,7 @@ const App = () => {
   );
 };
 
+// home page
 const Home = () => (
   <div className='home'>
     <button><Link to="/create-review" className="submit-button">Create Review</Link></button>

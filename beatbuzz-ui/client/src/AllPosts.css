@@ -23,8 +23,8 @@
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #fff; /* White background color */
-    color: #333; /* Default text color */
+    background-color: #fff; 
+    color: #333; 
   }
 
   .post-content {
@@ -64,7 +64,7 @@
   } 
   
  .star-filled {
-    stroke: #f39c12; /* Color for filled stars */
+    stroke: #f39c12; 
  } 
 
    .all-posts {
@@ -75,14 +75,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Center content vertically */
-     /* height: 100vh;  */
-
+    justify-content: center; 
    } 
    
   .logo {
-    width: 70px; /* Adjust the width as needed */
-    height: auto; /* Maintain aspect ratio */
+    width: 70px; 
+    height: auto; 
    margin-bottom: 20px; 
     
   } 
@@ -116,7 +114,7 @@
   .edit-button:hover,
   .delete-button:hover,
   .like-button:hover {
-    background-color: #0056b3; /* Darker background color on hover */
+    background-color: #0056b3;
     text-decoration: none;
   }
   
@@ -188,7 +186,7 @@
   } 
   
  .star-filled {
-    stroke: #f39c12; /* Color for filled stars */
+    stroke: #f39c12; 
  } 
 
    .all-posts {
@@ -199,14 +197,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Center content vertically */
+    justify-content: center;
      height: 100vh; 
 
    } 
    
   .logo {
-    width: 70px; /* Adjust the width as needed */
-    height: auto; /* Maintain aspect ratio */
+    width: 70px; 
+    height: auto;
    margin-bottom: 20px; 
     
   } 
@@ -227,10 +225,9 @@
     transition: background-color 0.3s ease;
     height: 30px;
   }
- 
+}
 
-  /* Add this class to change text color in dark mode */
-/* Add this class to change text color in dark mode */
+
 .dark-mode-text {
   color: #fff;
 }
@@ -238,17 +235,16 @@
 
 
 .dark-mode .post {
-  background-color: #222; /* Darker background color for posts */
+  background-color: #222;
   color: #fff; 
 } 
 
-/* Light mode styles */
+
 .light-mode {
-  background-color: #fff; /* Light background color */
-  color: #333; /* Dark text color */
+  background-color: #fff; 
+  color: #333; 
 }
 
-/* Add styles for toggle button */
 .toggle-button {
   position: fixed;
   top: 10px;
@@ -257,5 +253,6 @@
 }
 
 body.dark-mode {
-  background-color: #333; /* Dark background color */
-  color: #fff; /* Light text color */
+  background-color: #333; 
+  color: #fff; 
+}

@@ -1,5 +1,3 @@
-// StarRating.js
-
 import React, { useState } from 'react';
 import './StarRatingDisplay.css'; 
 const StarRating = ({ onChange }) => {

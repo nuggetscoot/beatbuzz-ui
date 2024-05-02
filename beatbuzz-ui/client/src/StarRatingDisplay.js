@@ -1,5 +1,5 @@
 import React from 'react';
-import './StarRatingCreate.css'; // Import CSS file for styling stars
+import './StarRatingCreate.css';
 
 const StarRating = ({ rating }) => {
   const filledStars = [...Array(rating)].map((_, index) => (

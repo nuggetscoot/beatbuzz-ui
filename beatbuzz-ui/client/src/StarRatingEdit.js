@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import './StarRatingEdit.css'; // Import the CSS file
-
+import './StarRatingEdit.css';
 const StarRatingEdit = ({ initialValue, onChange }) => {
   const [rating, setRating] = useState(initialValue);
 
@@ -10,7 +9,7 @@ const StarRatingEdit = ({ initialValue, onChange }) => {
   };
 
   return (
-    <div className="star-rating-edit"> {/* Apply the class name */}
+    <div className="star-rating-edit"> 
       {[...Array(5)].map((_, index) => {
         const ratingValue = index + 1;
         return (

@@ -1,25 +1,3 @@
-/* .star-rating-edit {
-    display: inline-block;
-  }
-  
-  .star-rating-edit input[type="radio"] {
-    display: none;
-  }
-  
-  .star-rating-edit label {
-    cursor: pointer;
-  }
-  
-  .star-rating-edit .star {
-    font-size: 24px;
-    color: #ccc;
-  }
-  
-  .star-rating-edit input[type="radio"]:checked + .star {
-    color: #f39c12;
-  } */
-/* StarRatingEdit.css */
-
 .star-rating-edit {
     display: inline-block;
   }
