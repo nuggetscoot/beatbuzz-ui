@@ -23,9 +23,9 @@ const App = () => {
 
   return (
     <Router>
-      <div className={`container ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
+      <div className={`container ${isDarkMode ? 'dark-mode' : ''}`}>
       {/* ternary operator checks for when toggle is clicked */}
-        <button onClick={toggleDarkMode} className={`toggle-button ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
+        <button onClick={toggleDarkMode} className={`toggle-button ${isDarkMode ? 'dark-mode-text' : ''}`}>
           {isDarkMode ? 'Light Mode' : 'Dark Mode'}
         </button>
         <img src={logo} alt="Logo" className="logo" />

@@ -50,7 +50,7 @@ const AllPostsPage = () => {
 
 
   return (
-    <div className={`all-posts-container ${darkMode ? 'dark-mode' : ''}`}>
+    <div className={`all-posts-container ${darkMode ? 'dark-mode-text' : ''}`}>
       <h2 className="all-posts">All Posts</h2>
       {posts.map(post => (
         <div key={post.id} className="post">
